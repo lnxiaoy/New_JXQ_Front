@@ -1,0 +1,40 @@
+<div class="bg-light lter b-b wrapper-md hidden-print">
+  <h1 class="m-n font-thin h3">驾校广场~</h1>
+</div>
+<div class="wrapper-md">
+  <div class="row row-sm">
+    <div class="col-lg-3 col-md-4 col-sm-6" ng-repeat="jx in jxs">
+      <div class="panel b-a">
+        <div class="panel-heading text-center bg-info no-border">
+          <h4 class="text-u-c m-b-none">{{jx.schoolName}}</h4>
+          <h2 class="m-t-none">
+            <sup class="pos-rlt" style="top:-22px">最多减免 ￥</sup>
+            <span class="text-2x text-lt">{{jx.discount}}</span>
+            <span class="text-xs">/ 人</span>
+          </h2>
+        </div>
+        <img src="img/c5.jpg" alt="xx" class="img-full">
+        
+        <ul class="list-group  no-borders m-t-sm">
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 本地户口 {{jx.localPrice}} 外地户口 {{jx.foreignPrice}}
+          </li>
+          
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> {{jx.orders}}人已预约
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 信誉保障
+          </li>
+          
+        </ul>
+        <div class="panel-footer text-center b-t m-t bg-light lter">
+          <div class="m-t-sm">{{jx.intro}}</div>
+          <a ui-sref="index.jx({jxId:jx.id})" class="btn btn-info font-bold m">预约走你</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+ 
+</div>
