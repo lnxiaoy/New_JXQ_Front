@@ -18,6 +18,11 @@
           <span >西安驾校</span>
         </a>
       </li>
+      <li ui-sref-active="active">
+        <a ui-sref="index.xajx({pageId:1})">
+          <span class="text-success">驾校广场</span>
+        </a>
+      </li>
       <li ui-sref-active="active" ng-repeat="jx in xajx">
         <a ui-sref="index.jx({jxId:jx.id})">
           <span>{{jx.schoolName}}</span>
@@ -42,19 +47,13 @@
   <li class="line dk hidden-folded"></li>
 
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
-    <span translate="aside.nav.your_stuff.YOUR_STUFF">Your Stuff</span>
+    <span >个人信息</span>
   </li>  
   <li>
-    <a ui-sref="app.page.profile">
+    <a ui-sref="index.profile">
       <i class="icon-user icon text-success-lter"></i>
       <b class="badge bg-success pull-right">30%</b>
-      <span translate="aside.nav.your_stuff.PROFILE">Profile</span>
-    </a>
-  </li>
-  <li>
-    <a ui-sref="app.docs">
-      <i class="icon-question icon"></i>
-      <span translate="aside.nav.your_stuff.DOCUMENTS">Documents</span>
+      <span >完善个人信息</span>
     </a>
   </li>
 </ul>

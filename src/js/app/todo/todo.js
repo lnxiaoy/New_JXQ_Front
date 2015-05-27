@@ -16,7 +16,7 @@ app.factory('todoStorage', function () {
 app.controller('TodoCtrl', ['$scope', '$location', '$filter', 'todoStorage', function($scope, $location, $filter, todoStorage) {
     var todos = $scope.todos = todoStorage.get();
 
-    $scope.newTodo = '';
+    $scope.newTodo = 'xx';
     $scope.remainingCount = $filter('filter')(todos, {completed: false}).length;
 
 
@@ -25,6 +25,8 @@ app.controller('TodoCtrl', ['$scope', '$location', '$filter', 'todoStorage', fun
     }
 
     $scope.location = $location;
+
+    
 
     $scope.$watch('location.path()', function (path) {
         console.log(path);

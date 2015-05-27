@@ -32,9 +32,16 @@ angular.module('app')
                       schoolName: '华英驾校',
                       id: '002'
                     }];
+
                   }
               })
-              
+              .state('index.portal',{
+                url: '/portal',
+                templateUrl: 'tpl/portal.html',
+                controller: function($scope){
+
+                }
+              })
               //西安所有驾校
               .state('index.xajx', {
                   url: '/xajx/:pageId',
@@ -45,7 +52,6 @@ angular.module('app')
                     //TODO:用pageId 和区域("xa")请求某个页的所有驾校
                     //一页先有16个驾校
                     
-                    console.log(pageId);
                     $scope.jxs = [{
                       schoolName: '锦志程驾校',
                       id: '001',
@@ -54,7 +60,7 @@ angular.module('app')
                       discount: 30,
                       orders: 45,
                       indexPic: "http://..",
-                      intro: "西电 运动短裤男 薄篮球中裤男士运动七分裤夏季棉裤透气跑步健身"
+                      intro: "西电 运动短裤男 "
                     },{
                       schoolName: '华英驾校',
                       id: '002',
@@ -64,7 +70,57 @@ angular.module('app')
                       indexPic: "http://..",
                       orders: 88,
                       intro: "西电 西外 西工大 一条龙"
-                    }]
+                    },{
+                      schoolName: '锦志程驾校',
+                      id: '003',
+                      localPrice: 2000,
+                      foreignPrice: 3000,
+                      discount: 30,
+                      orders: 45,
+                      indexPic: "http://..",
+                      intro: "西电 运动短裤男 "
+                    },{
+                      schoolName: '华英驾校',
+                      id: '004',
+                      localPrice: 2500,
+                      foreignPrice: 3400,
+                      discount: 20,
+                      indexPic: "http://..",
+                      orders: 88,
+                      intro: "西电 西外 西工大 一条龙"
+                    },{
+                      schoolName: '锦志程驾校',
+                      id: '005',
+                      localPrice: 2000,
+                      foreignPrice: 3000,
+                      discount: 30,
+                      orders: 45,
+                      indexPic: "http://..",
+                      intro: "西电 运动短裤男 "
+                    },{
+                      schoolName: '华英驾校',
+                      id: '006',
+                      localPrice: 2500,
+                      foreignPrice: 3400,
+                      discount: 20,
+                      indexPic: "http://..",
+                      orders: 88,
+                      intro: "西电 西外 西工大 一条龙"
+                    }];
+
+                    $scope.filteredJxs = []
+                    ,$scope.currentPage = 1
+                    ,$scope.numPerPage = 10
+                    ,$scope.maxSize = 4;
+
+
+
+                    $scope.$watch("currentPage + numPerPage", function() {
+                      var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+                      , end = begin + $scope.numPerPage;
+
+                      $scope.filteredJxs = $scope.jxs.slice(begin, end);
+                    });
                   }
               })
               
@@ -76,14 +132,26 @@ angular.module('app')
                     var jxId = $stateParams.jxId;
                     //根据驾校Id获取该驾校的详细信息
                     //
-                    var info = {
+                    $scope.jx = {
                       name: '锦志程驾校',
                       id: '001',
                       localPrice: 2000,
                       foreignPrice: 3000,
                       discount: 30,
                       orders: 45,
-                                            
+                      intro: "西电 运动短裤男 薄篮球中裤男士运动七分裤夏季棉裤透气跑步健身"                       
+                    }
+
+                    $scope.myInterval = 5000;
+                    var slides = $scope.slides = [];
+                    $scope.addSlide = function() {
+                      slides.push({
+                        image: 'img/c' + slides.length + '.jpg',
+                        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+                      });
+                    };
+                    for (var i=0; i<3; i++) {
+                      $scope.addSlide();
                     }
                   }
               })

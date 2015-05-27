@@ -30,6 +30,37 @@
     };
   }])
   ; 
+
+
+  app.controller('searchCtrl', ['$scope','$state', function($scope,$state) {
+    $scope.keyword = "";
+
+    $scope.xajx = $scope.$parent.$parent.xajx; //TODO: 暂时这么做
+    //$scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+    // Any function returning a promise object can be used to load values asynchronously
+    $scope.getLocation = function(val) {
+      return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+        params: {
+          address: val,
+          sensor: false
+        }
+      }).then(function(res){
+        var addresses = [];
+        angular.forEach(res.data.results, function(item){
+          addresses.push(item.formatted_address);
+        });
+        return addresses;
+      });
+    };
+
+    $scope.search = function(){
+      
+      $state.go('index.jx',{'jxId':$scope.keyword});
+      // console.log($scope.keyword);
+    }
+  }])
+  ; 
+
   app.controller('AlertDemoCtrl', ['$scope', function($scope) {
     $scope.alerts = [
       { type: 'success', msg: 'Well done! You successfully read this important alert message.' },
@@ -132,8 +163,11 @@
   }])
   ; 
   app.controller('PaginationDemoCtrl', ['$scope', '$log', function($scope, $log) {
-    $scope.totalItems = 64;
-    $scope.currentPage = 4;
+   
+
+
+   /* $scope.totalItems = 20;
+    $scope.currentPage = 1;
 
     $scope.setPage = function (pageNo) {
       $scope.currentPage = pageNo;
@@ -145,7 +179,7 @@
 
     $scope.maxSize = 5;
     $scope.bigTotalItems = 175;
-    $scope.bigCurrentPage = 1;
+    $scope.bigCurrentPage = 1;*/
   }])
   ; 
   app.controller('PopoverDemoCtrl', ['$scope', function($scope) {
@@ -210,6 +244,7 @@
     };
   }])
   ; 
+
   app.controller('TooltipDemoCtrl', ['$scope', function($scope) {
     $scope.dynamicTooltip = 'Hello, World!';
     $scope.dynamicTooltipText = 'dynamic';

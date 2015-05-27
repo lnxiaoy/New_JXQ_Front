@@ -1,9 +1,17 @@
 <div class="bg-light lter b-b wrapper-md hidden-print">
   <h1 class="m-n font-thin h3">驾校广场~</h1>
 </div>
+<div>
+        <ul class="breadcrumb bg-white b-a">
+          <li><a ui-sref="index.portal"><i class="fa fa-home"></i> 首页</a></li>
+          <li class="active"><a ui-sref="index.xajx({pageId:1})">西安驾校</a></li>
+        </ul>
+      </div>
+  
+
 <div class="wrapper-md">
   <div class="row row-sm">
-    <div class="col-lg-3 col-md-4 col-sm-6" ng-repeat="jx in jxs">
+    <div class="col-lg-3 col-md-4 col-sm-6" ng-repeat="jx in filteredJxs">
       <div class="panel b-a">
         <div class="panel-heading text-center bg-info no-border">
           <h4 class="text-u-c m-b-none">{{jx.schoolName}}</h4>
@@ -38,3 +46,19 @@
   </div>
  
 </div>
+
+<!-- pagination -->
+      <div >
+      
+        <pagination 
+          ng-model="currentPage"
+          total-items="jxs.length"
+          max-size="maxSize"  
+          boundary-links="true">
+        </pagination>
+        <!-- <pager total-items="totalItems" ng-model="currentPage"></pager> -->
+        
+      </div>
+
+
+      <!-- / pagination -->
