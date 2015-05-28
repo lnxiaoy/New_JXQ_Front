@@ -8,7 +8,7 @@
         </button>
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-btc"></i>
+          <!-- <i class="fa fa-btc"></i> -->
           <img src="img/logo.png" alt="." class="hide">
           <span class="hidden-folded m-l-xs">{{app.name}}</span>
         </a>
@@ -28,9 +28,15 @@
           </a>
         </div>
         <!-- / buttons -->
-
+        
         <!-- link and dropdown -->
         <ul class="nav navbar-nav hidden-sm">
+          <li >
+            <a ui-sref="index.portal">
+              <span >首页</span> 
+            </a>
+            
+          </li>
           <li class="dropdown" dropdown>
             <a href class="dropdown-toggle" dropdown-toggle>
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
@@ -170,7 +176,7 @@
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
               <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
+                <div id="qrcodeTable">
                   <p>欢迎来到驾校圈</p>
                 </div>
                 <!-- <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar> -->
@@ -182,12 +188,6 @@
                 </a>
               </li>
               
-              <!-- <li>
-                <a ui-sref="app.docs">
-                  <span class="label bg-info pull-right">new</span>
-                  Help
-                </a>
-              </li> -->
               <li class="divider"></li>
               <li>
                 <a ui-sref="access.userSignin">退出</a>

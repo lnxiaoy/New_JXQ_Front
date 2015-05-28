@@ -32,14 +32,25 @@ angular.module('app')
                       schoolName: '华英驾校',
                       id: '002'
                     }];
-
+                    
                   }
               })
               .state('index.portal',{
                 url: '/portal',
                 templateUrl: 'tpl/portal.html',
                 controller: function($scope){
-
+                   $scope.myInterval = 5000;
+                    var indexSlides = $scope.indexSlides = [];
+                    $scope.addSlide = function() {
+                      indexSlides.push({
+                        //image: 'img/c' + indexSlides.length + '.jpg',
+                        image: 'img/index_img_' + (indexSlides.length+1) + '.png'
+                        //text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][indexSlides.length % 4]
+                      });
+                    };
+                    for (var i=0; i<3; i++) {
+                      $scope.addSlide();
+                    }
                 }
               })
               //西安所有驾校
@@ -88,24 +99,6 @@ angular.module('app')
                       indexPic: "http://..",
                       orders: 88,
                       intro: "西电 西外 西工大 一条龙"
-                    },{
-                      schoolName: '锦志程驾校',
-                      id: '005',
-                      localPrice: 2000,
-                      foreignPrice: 3000,
-                      discount: 30,
-                      orders: 45,
-                      indexPic: "http://..",
-                      intro: "西电 运动短裤男 "
-                    },{
-                      schoolName: '华英驾校',
-                      id: '006',
-                      localPrice: 2500,
-                      foreignPrice: 3400,
-                      discount: 20,
-                      indexPic: "http://..",
-                      orders: 88,
-                      intro: "西电 西外 西工大 一条龙"
                     }];
 
                     $scope.filteredJxs = []
@@ -139,6 +132,10 @@ angular.module('app')
                       foreignPrice: 3000,
                       discount: 30,
                       orders: 45,
+                      phone: "18710847003",
+                      locate: '老校区附近',
+                      mapUrl: 'http://j.map.baidu.com/6gTq3',
+                      serviceSchool: '西电老校区 西电新校区',
                       intro: "西电 运动短裤男 薄篮球中裤男士运动七分裤夏季棉裤透气跑步健身"                       
                     }
 
@@ -153,6 +150,14 @@ angular.module('app')
                     for (var i=0; i<3; i++) {
                       $scope.addSlide();
                     }
+
+
+                    $scope.oneAtATime = true;
+
+    
+
+    
+
                   }
               })
               //某个驾校下单页面,以ID区分
