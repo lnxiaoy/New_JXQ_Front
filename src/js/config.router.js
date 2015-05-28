@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider, JQ_CONFIG) {
           
           $urlRouterProvider
-              .otherwise('/index/xajx/2');
+              .otherwise('/index/xajx/001');
 
           $stateProvider
               .state('index', {
