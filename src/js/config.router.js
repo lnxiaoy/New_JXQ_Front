@@ -173,7 +173,21 @@ angular.module('app')
               })
               .state('index.myOrder', {
                   url: '/myOrder/:userid',
-                  templateUrl: 'tpl/myOrder.html'
+                  templateUrl: 'tpl/myOrder.html',
+                  controller:function ($scope){
+                    $scope.orders=[{
+                      id:'00',
+                      jxname:'华英驾校',
+                      jxid:'001',
+                      time:'2015-3-3',
+                      status:'未确认'
+                    },
+                    { id:'01',
+                      jxname:'xx驾校',
+                      jxid:'002',
+                      time:'2015-3-23',
+                      status:'已确认'}]
+                  }
               })
 
               //需要驾校登录,驾校管理页面
