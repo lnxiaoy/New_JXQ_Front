@@ -62,7 +62,6 @@ angular.module('app')
 
                     //TODO:用pageId 和区域("xa")请求某个页的所有驾校
                     //一页先有16个驾校
-                    
                     $scope.jxs = [{
                       schoolName: '锦志程驾校',
                       id: '001',
@@ -162,14 +161,38 @@ angular.module('app')
               })
               //某个驾校下单页面,以ID区分
               .state('index.order', {
-                  url: '/order/:jxId',
-                  templateUrl: 'tpl/order.html'
+                  url: '/order/:jxId/:jxname',
+                  templateUrl: 'tpl/order.html',
+                  controller:function ($scope,$stateParams,$http){
+                      $scope.jxname = $stateParams.jxname; 
+                      //$scope.ordercontactname='fff';
+                      var post = {
+                        name:$scope.ordercontactname
+                      }
+                      console.log($scope.ordercontactname);
+                      // $http('post', 'url/', post, function(status, response){
+                      //   // success
+                      // }, function(status, response){
+                      //   // error
+                      // });
+                  }
               })
 
               //需要用户登录
               .state('index.profile', {
                   url: '/profile/:userid',
-                  templateUrl: 'tpl/profile.html'
+                  templateUrl: 'tpl/profile.html',
+                  controller: 'XeditableCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad ){
+                          return $ocLazyLoad.load('xeditable').then(
+                              function(){
+                                  return $ocLazyLoad.load('js/controllers/xeditable.js');
+                              }
+                          );
+                      }]
+                  }
               })
               .state('index.myOrder', {
                   url: '/myOrder/:userid',
@@ -192,11 +215,11 @@ angular.module('app')
 
               //需要驾校登录,驾校管理页面
               .state('index.manager', {
-                  url: '/manager/:jxid',
+                  url: '/manager',
                   templateUrl: 'tpl/manager.html'
               })
               .state('index.jxEdit', {
-                  url: '/jxEdit/:jxid',
+                  url: '/jxEdit',
                   templateUrl: 'tpl/jxEdit.html'
               })
 

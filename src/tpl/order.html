@@ -14,7 +14,7 @@
       </div>
     </div>
     <!-- / main header -->
-    <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+    <div class="wrapper-md">
       <!-- stats -->
       <div class="row">
         <div class="col-md-12">
@@ -23,7 +23,7 @@
                     <h3 class="panel-title">确认联系人信息</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="payForm" action="" method="post">
+                    <form class="form-horizontal" id="payForm" ng-submit="submitorder()">
                         <div class="form-group">
                             <label for="school" class="col-sm-2 control-label">选择学校</label>
                             <div class="col-lg-3">
@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">联系人姓名</label>
                             <div class="col-lg-3">
-                                <input type="text" class="form-control" name="contact" pattern="^([\u4E00-\uFA29]|[\uE7C7-\uE7F3])*$" id="contact" placeholder="填写联系人姓名" required>
+                                <input type="text" class="form-control" name="contact" id="contact" placeholder="填写联系人姓名" required ng-model="ordercontactname" value="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label for="jx_name" class="col-sm-2 control-label">驾校名称</label>
                             <div class="col-lg-3">
-                                <input type="text" class="form-control" name="jx_name" id="jx_name" value="" form="payForm" disabled>
+                                <input type="text" class="form-control" name="jx_name" id="jx_name" value="{{jxname}}" form="payForm" disabled>
                             </div>
                         </div>
                         <div class="form-group">
@@ -86,7 +86,7 @@
                             <i>总计：</i><span>￥00.00</span>
                         </div>
                         <div class="cart_btnBox">
-                            <input id="submitOrder" type="button" class="btn btn-warning cart_btn" value="提交订单">
+                            <input id="submitOrder" type="submit" class="btn btn-warning cart_btn" value="提交订单">
                         </div>
                     </div>
                 </div>

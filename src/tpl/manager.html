@@ -1,22 +1,30 @@
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
 <div class="bg-light lter b-b wrapper-md">
-  <h1 class="m-n font-thin h3">Datatable</h1>
+  <h1 class="m-n font-thin h3">订单管理</h1>
 </div>
+      </div>
+    </div>
+    <!-- / main header -->
+
 <div class="wrapper-md">
   <div class="panel panel-default">
     <div class="panel-heading">
-      DataTables
+      预约订单
     </div>
     <div class="table-responsive">
       <table ui-jq="dataTable" ui-options="{
           ajax:{
-          url:'api/datatable.json'},
+          url:'api/data.json'},
           
-          aoColumns: [
-            { mData: 'engine' },
-            { mData: 'browser' },
-            { mData: 'platform' },
-            { mData: 'version' },
-            { mData: 'grade' }
+          columns: [
+            { data: 'engine' },
+            { data: 'browser' },
+            { data: 'platform' },
+            { data: 'version' },
+            { data: 'grade' }
           ]
         }" class="table table-striped b-t b-b">
         <thead>
@@ -34,3 +42,5 @@
     </div>
   </div>
 </div>
+
+  </div>
